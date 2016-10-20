@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body ng-app="homepage" ng-controller="getPatients">
+    <div style="background-color: #00703d" class="jumbotron">
+      <div style="margin-left: 1%; display: inline-block;">
+        <img src="http://publichealth.uncc.edu/sites/all/themes/unc_charlotte/logo.png" alt="UNC Charlotte Logo"></div>
+      <div style="display: inline-block; width: 20%"></div>  
+      <div style="display: inline-block;">
+        <h2 style="color: white; ">DEPARTMENT OF PUBLIC HEALTH SCIENCES</h2></div>
+    </div>
+    <div class="container" >
+    <nav class="navbar" style="float: right">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <button id="logout" class="btn btn-default" style="float: right">Logout</button>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </div>
+
+    <div id="patientTableDiv" class="container table-responsive">
+        <table id="patientTable" class="display table table-bordered table-striped" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>User Name</th>
+                  <th>Password</th>
+                  <th>Gender</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="patient in patients">
+                  <td>{{patient.name}}</td>
+                  <td>{{patient.username}}</td>
+                  <td>{{patient.password}}</td>
+                  <td>{{patient.gender}}</td>
+                  <td><button ng-click="viewResponses($index)"><strong>View Responses</strong></button>
+                  <button ng-click="viewScore($index)"><strong>View Score</strong></button></td>
+              </tr>
+          </tbody>
+    
+      </table>
+    </div>
+  
+    <div id="responseTableDiv" class="container table-responsive" style="display:none;">
+        <table id="responseTable" class="display table table-bordered table-striped" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Question</th>
+                  <th>Answer</th>
+                  <th>Sub Question</th>
+                  <th>Sub Answer</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="response in responses">
+                  <td>{{response.Question}}</td>
+                  <td>{{response.Answer}}</td>
+                  <td>{{response.SubQuestion}}</td>
+                  <td>{{response.SubQuestionAnswer}}</td>
+              </tr>
+          </tbody>
+      </table>
+      <button id="goBack" class="btn btn-default" style="float: right">Back</button>
+      <input type="image" id="printButton" onclick='window.print();' src="print.png" alt="Submit">
+    </div>
+
+    <div id="scoresTableDiv" class="container table-responsive" style="display:none;">
+        <table id="scoresTable" class="display table table-bordered table-striped" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Activity</th>
+                  <th>Score</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="score in scores">
+                  <td>{{score[0]}}</td>
+                  <td>{{score[1]}}</td>
+              </tr>
+          </tbody>
+    
+      </table>
+      <button id="goHome" class="btn btn-default" style="float: right">Back</button>
+      <input type="image" id="printButton" onclick='window.print();' src="print.png" alt="Submit">
+    </div>
+    <br/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="homepage.js"></script>
+
+  </body>
+</html>
